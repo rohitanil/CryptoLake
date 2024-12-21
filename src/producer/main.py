@@ -3,8 +3,8 @@ import time
 import json
 from kafka import KafkaProducer
 from src.producer.crypto import get_coin_price
-from enums import Constants
-from utilities import on_send_error, on_send_success
+from src.utilities.enums import KafkaConstants
+from src.utilities.utilities import on_send_error, on_send_success
 
 try:
     from yaml import CLoader as Loader
@@ -28,11 +28,11 @@ def config_reader(path):
 
 
 def kafka_producer(secret_token):
-    crypto = Constants.CRYPTO.value
-    base_currencies = Constants.BASE_CURRENCY.value
-    bootstrap = Constants.BOOTSTRAP_SERVER.value
-    topic = Constants.KAFKA_TOPIC.value
-    interval = Constants.INTERVAL.value
+    crypto = KafkaConstants.CRYPTO.value
+    base_currencies = KafkaConstants.BASE_CURRENCY.value
+    bootstrap = KafkaConstants.BOOTSTRAP_SERVER.value
+    topic = KafkaConstants.KAFKA_TOPIC.value
+    interval = KafkaConstants.INTERVAL.value
 
     producer = KafkaProducer(
         bootstrap_servers=[bootstrap],
@@ -49,7 +49,7 @@ def kafka_producer(secret_token):
 
 if __name__ == "__main__":
     try:
-        token = config_reader(Constants.CONFIG.value)
+        token = config_reader(KafkaConstants.CONFIG.value)
         kafka_producer(token)
     except Exception as e:
         print(e)
