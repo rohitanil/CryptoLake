@@ -1,3 +1,5 @@
 reddit:
   client: RTLmwe1yvNd9N6PfFWbqLg
   secret: 3yyVCwTwunOwzXUVzYrij6LbkPnXUw
+crypto:
+  api_token:
