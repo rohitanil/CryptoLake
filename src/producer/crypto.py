@@ -12,9 +12,12 @@ def get_coin_price(coins, currency, api_key):
     :return: response: JSON response from the API
     """
     base_url = KafkaConstants.CRYPTO_URL.value
-    request_url = base_url+"fsyms={c}&tsyms={curr}&api_key={api}". \
-        format(c=coins, curr=currency, api=api_key)
-    response = requests.get(request_url).json()
+    response = requests.get(
+        base_url,
+        params={"fsyms": coins, "tsyms": currency,
+                "api_key": api_key},
+        headers={"Content-type": "application/json; charset=UTF-8"}
+    ).json()
     output = dict()
     output['BTC_EUR'] = response.get('BTC').get('EUR')
     output['BTC_INR'] = response.get('BTC').get('INR')
