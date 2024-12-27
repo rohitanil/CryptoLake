@@ -10,18 +10,9 @@ def getSpark(warehouse, uri):
         .setAppName('KAFKA-ICEBERG-DATA-LAKE')
         # packages
         .set('spark.jars.packages',
-             'org.projectnessie.nessie-integrations:nessie-spark-extensions-3.3_2.12:0.76.0,'
              'org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.7.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.4')
         .set('spark.sql.extensions',
-             'org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions,'
-             'org.projectnessie.spark.extensions.NessieSparkSessionExtensions')
-        # Configuring Catalog
-        .set('spark.sql.catalog.nessie', 'org.apache.iceberg.spark.SparkCatalog')
-        .set('spark.sql.catalog.nessie.uri', uri)
-        .set('spark.sql.catalog.nessie.ref', 'main')
-        .set('spark.sql.catalog.nessie.authentication.type', 'NONE')
-        .set('spark.sql.catalog.nessie.catalog-impl', 'org.apache.iceberg.nessie.NessieCatalog')
-        .set('spark.sql.catalog.nessie.warehouse', warehouse)
+             'org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions')
     )
     spark_sess = SparkSession.builder.config(conf=conf).getOrCreate()
     return spark_sess
@@ -29,9 +20,9 @@ def getSpark(warehouse, uri):
 
 if __name__ == "__main__":
     WAREHOUSE = "nessie"
-    URI = "http://nessie:19120/api/v1"
+    URI = "http://rest:8181"
     CHECKPOINT = "/tmp/spark/checkpoints/crypto_metrics"
-    TABLE = "nessie.crypto_metrics"
+    TABLE = "rest.crypto_metrics"
     QUERY = """
             CREATE TABLE IF NOT EXISTS {table} (
                 window_start TIMESTAMP,
