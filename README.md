@@ -8,6 +8,7 @@ This repository is used to create an Iceberg format data lake.
 5. Superset
 6. Prometheus
 7. Grafana
+8. Dremio
 
 ## Architecture
 ![screenshot](artifacts/architecture.png)
@@ -22,11 +23,11 @@ This repository is used to create an Iceberg format data lake.
     crypto:
       api_token: "API_TOKEN"
     ````
-Get the API Token from https://min-api.cryptocompare.com/
+   Get the API Token from [min-api.cryptocompare](https://min-api.cryptocompare.com/)
 3. Run ``main.py`` to produce data to the kafka topic. Make sure the Kafka cluster is up and ``crypto`` topic is created on the cluster. More information regarding the cluster can be found under ``src/utilities/enums.py``
-4. Make sure Docker Desktop is running and run ``docker-compose build`` and ``docker-compose up`` from `docker/`. This will create the required containers such as spark-iceberg, nessie catalog and runs the spark streaming job. The spark job will write data to iceberg tables.
+4. Make sure Docker Desktop is running and run ``docker-compose up`` from `docker-spark-iceberg/`. This will create the required containers such as spark-iceberg, nessie catalog and runs the spark streaming job. The spark job will write data to iceberg tables. More details about teh docker containers can be found in the README under this same path.
 
 ## TODO
-1. Superset
+1. Dremio and Superset
 2. Copy source file to container on startup
 3. Kafka as a container instead of a separate service
