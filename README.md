@@ -25,7 +25,7 @@ This repository is used to create an Iceberg format data lake.
     ````
    Get the API Token from [min-api.cryptocompare](https://min-api.cryptocompare.com/)
 3. Run ``main.py`` to produce data to the kafka topic. Make sure the Kafka cluster is up and ``crypto`` topic is created on the cluster. More information regarding the cluster can be found under ``src/utilities/enums.py``
-4. Make sure Docker Desktop is running and run ``docker-compose up`` from `docker-spark-iceberg/`. This will create the required containers such as spark-iceberg, nessie catalog and runs the spark streaming job. The spark job will write data to iceberg tables. More details about teh docker containers can be found in the README under this same path.
+4. Make sure Docker Desktop is running and run ``docker-compose up`` from `docker-spark-iceberg/`. This will create the required containers such as spark-iceberg, iceberg rest catalog etc. The spark job will write data to iceberg tables. More details about the docker containers can be found in the README under this same path.
 
 ## TODO
 1. Trino Support
