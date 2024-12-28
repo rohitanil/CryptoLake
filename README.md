@@ -3,12 +3,12 @@ This repository is used to create an Iceberg format data lake.
 ## Tech Stack
 1. Kafka
 2. Spark Streaming
-3. Nessie
+3. Iceberg Rest Catalog
 4. Iceberg
-5. Superset
+5. Trino
 6. Prometheus
 7. Grafana
-8. Dremio
+
 
 ## Architecture
 ![screenshot](artifacts/architecture.png)
@@ -29,4 +29,5 @@ This repository is used to create an Iceberg format data lake.
 
 ## TODO
 1. Trino Support
-2. OLAP Support(Apache Pinot)
+2. Observability using Prometheus and Grafana
+3. Maybe add an OLAP engine like Pinot to ingest data from Kafka
