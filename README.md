@@ -28,6 +28,5 @@ This repository is used to create an Iceberg format data lake.
 4. Make sure Docker Desktop is running and run ``docker-compose up`` from `docker-spark-iceberg/`. This will create the required containers such as spark-iceberg, nessie catalog and runs the spark streaming job. The spark job will write data to iceberg tables. More details about teh docker containers can be found in the README under this same path.
 
 ## TODO
-1. Dremio and Superset
-2. Copy source file to container on startup
-3. Kafka as a container instead of a separate service
+1. Trino Support
+2. OLAP Support(Apache Pinot)
