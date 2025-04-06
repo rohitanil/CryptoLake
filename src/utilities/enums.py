@@ -1,13 +1,12 @@
 from enum import Enum
 
 
-class KafkaConstants(Enum):
-    CONFIG = "/Users/rohitanilkumar/Syracuse/Projects/CryptoLake/src/config/config.yml"
-    CRYPTO_URL = "https://min-api.cryptocompare.com/data/pricemulti?"
-    KAFKA_TOPIC = "crypto"
-    INTERVAL = 1
-    CRYPTO = "BTC,ETH"
-    BASE_CURRENCY = "INR,USD,EUR"
-    BOOTSTRAP_SERVER = "localhost:9092"
+class Constants(Enum):
+    WEATHER_URL = "http://api.weatherapi.com/v1/current.json?key={key}&q={state}&aqi=yes"
+    KAFKA_TOPIC = "weather"
+    INTERVAL = 10
+    STATES = ["San Francisco", "New York"]
+    BOOTSTRAP_SERVER = "localhost:29092"
+
 
 
